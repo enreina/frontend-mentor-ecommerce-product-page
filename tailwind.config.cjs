@@ -8,9 +8,9 @@ module.exports = {
     extend: {
       colors: {
         orange: "hsl(26, 100%, 55%)",
-        darkBlue: "hsl(220, 13%, 13%)",
-        darkGrayBlue: "hsl(219, 9%, 45%)",
-        lightGrayBlue: "hsl(223, 64%, 98%)",
+        "dark-blue": "hsl(220, 13%, 13%)",
+        "dark-gray-blue": "hsl(219, 9%, 45%)",
+        "light-gray-blue": "hsl(223, 64%, 98%)",
       },
     },
   },
