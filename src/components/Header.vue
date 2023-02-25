@@ -1,5 +1,7 @@
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 type NavigationLink = {
     title: string, 
     href: string,
@@ -11,11 +13,14 @@ const navigationLinks: NavigationLink[] = [
     {title: "About", href: "#"},
     {title: "Contact", href: "#"},
 ];
+
+const isDrawerOpen = ref<boolean>(false);
+
 </script>
 
 <template>
     <header class="px-6 md:px-0 flex flex-row space-x-4 md:space-x-8 md:border-b box-content items-center">
-        <button class="md:hidden fill-dark-gray-blue hover:fill-dark-blue">
+        <button @click="isDrawerOpen = true" class="md:hidden fill-dark-gray-blue hover:fill-dark-blue">
             <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill-rule="evenodd"/></svg>
         </button> 
         <a class="grow md:grow-0 flex items-center py-4 md:py-8" href="#"><img class="py-2" height="20px" src="../assets/logo.svg" /></a>
@@ -34,4 +39,24 @@ const navigationLinks: NavigationLink[] = [
         </button>
         <button><img class="rounded-full border-2 border-transparent hover:border-orange w-8 h-8 md:w-14 md:h-14" src="../assets/image-avatar.png" /></button>
     </header>
+
+    <div class="fixed inset-0 h-screen w-screen bg-black/75 transition-opacity md:hidden" 
+        :class="{invisible: !isDrawerOpen, visible: isDrawerOpen, 'opacity-0': !isDrawerOpen, 'opacity-1': isDrawerOpen}"
+        @click="isDrawerOpen = false">
+    </div>
+
+    <div class="fixed inset-0 bg-white h-screen p-6 transition-transform w-3/4 md:hidden" 
+        :class="{'-translate-x-full': !isDrawerOpen, 'translate-x-0': isDrawerOpen}">
+        <button @click="isDrawerOpen = false" class="fill-dark-gray-blue hover:fill-dark-blue">
+            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill-rule="evenodd"/></svg>
+        </button>
+        <nav class="flex flex-col gap-8 mt-14">
+            <a v-for="link in navigationLinks" 
+            class="text-dark-blue hover:text-dark-gray-blue text-lg font-bold" 
+            href="#">
+                {{ link.title }}
+            </a>
+        </nav>
+
+    </div>
 </template>
