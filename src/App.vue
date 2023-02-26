@@ -2,7 +2,8 @@
 import Header from './components/Header.vue'
 import ProductImages from './components/ProductImages.vue';
 import { Product } from './types/product';
-import { store } from './store/store'
+import { store } from './store/store';
+import {getPriceAsStr, getDiscountAsStr, getDiscountedPrice} from './utils';
 
 const currentProduct: Product = {
   id: 1,
@@ -18,18 +19,6 @@ const currentProduct: Product = {
     }
   ],
 };
-
-function getPriceAsStr(price: number) {
-  return new Intl.NumberFormat('en-US', {style: 'currency', currency: "USD"}).format(price);
-}
-
-function getDiscountedPrice(price: number, discount: number) {
-  return price * discount;
-} 
-
-function getDiscountAsStr(discount: number) {
-  return `${discount * 100}%`;
-}
 
 </script>
 
