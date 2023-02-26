@@ -11,6 +11,12 @@ const currentProduct: Product = {
   description: "These low profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
   price: 250,
   discount: 0.5,
+  images: [
+    { 
+      imageFilename: "image-product-1.jpg", 
+      thumbnailFilename: "image-product-1-thumbnail.jpg"
+    }
+  ],
 };
 
 function getPriceAsStr(price: number) {
@@ -30,7 +36,7 @@ function getDiscountAsStr(discount: number) {
 <template>
   <Header />
   <div class="flex flex-col md:flex-row md:mt-20 md:justify-evenly">
-    <div class="h-[300px] md:h-full md:max-w-md"><ProductImages /></div>
+    <div class="h-[300px] md:h-full md:max-w-md"><ProductImages :images="currentProduct.images" /></div>
     <div class="p-6 md:max-w-md">
       <span class="text-orange uppercase text-base font-bold tracking-widest">{{ currentProduct.brand }}</span>
       <h2 class="text-3xl md:text-4xl font-bold mt-4">{{ currentProduct.name }}</h2>
