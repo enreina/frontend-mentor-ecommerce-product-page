@@ -9,6 +9,7 @@ type ProductInCart = {
 type Store = {
     cart: ProductInCart[],
     addToCart: (product: Product) => void,
+    removeFromCart: (product: Product) => void,
 };
 
 export const store = reactive<Store>({
@@ -20,5 +21,8 @@ export const store = reactive<Store>({
         } else {
             this.cart.push({product, amount: 1});
         }
+    },
+    removeFromCart(product) {
+        this.cart = this.cart.filter(({product: {name}}) => name !== product.name);
     }
 });
