@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import { Product } from '../types/product';
 
 type ProductInCart = {
@@ -25,4 +25,8 @@ export const store = reactive<Store>({
     removeFromCart(product) {
         this.cart = this.cart.filter(({product: {name}}) => name !== product.name);
     }
+});
+
+export const numOfItemsInCart = computed(() => {
+    return store.cart.reduce((total, {amount}) => total + amount, 0);
 });
