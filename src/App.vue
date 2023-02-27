@@ -44,7 +44,7 @@ const selectedAmount = ref<number>(1);
     <div class="h-[300px] md:h-full md:max-w-lg"><ProductImages :images="currentProduct.images" /></div>
     <div class="p-6 md:max-w-lg">
       <span class="text-orange uppercase text-base font-bold tracking-widest">{{ currentProduct.brand }}</span>
-      <h2 class="text-3xl md:text-4xl font-bold mt-4">{{ currentProduct.name }}</h2>
+      <h1 class="text-3xl md:text-4xl font-bold mt-4">{{ currentProduct.name }}</h1>
       <p class="text-dark-gray-blue mt-4 md:mt-8 text-base">{{ currentProduct.description }}</p>
       <div class="flex flex-row md:flex-col mt-8">
         <div class="flex flex-row space-x-4 grow items-center">
