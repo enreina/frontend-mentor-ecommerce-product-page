@@ -55,7 +55,7 @@ const selectedAmount = ref<number>(1);
       </div>
       <div class="flex flex-col md:flex-row mt-8 gap-4 items-center">
         <div class="w-full md:basis-64"><NumberInput :on-change="(value) => selectedAmount = value" :value="selectedAmount" :min="1"/></div>
-        <button @click="store.addToCart(currentProduct, selectedAmount)"
+        <button aria-label="Add to cart" @click="store.addToCart(currentProduct, selectedAmount)"
         class="w-full bg-orange hover:bg-light-orange text-center text-white py-4 drop-shadow-lg rounded-lg text-base font-bold tracking-wide
         flex flex-row justify-center gap-4 items-center">
             <svg class="fill-white" width="22" height="20" xmlns="http://www.w3.org/2000/svg">

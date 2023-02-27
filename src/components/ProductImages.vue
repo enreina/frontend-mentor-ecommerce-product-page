@@ -33,26 +33,27 @@ const currentImageSrc = computed<string>(() => {
     <!-- mobile -->
     <div class="md:hidden relative h-full overflow-hidden">
         <Transition :name="transitionName">
-            <img class="object-cover w-full h-full md:rounded-2xl" :src="currentImageSrc" :key="currentImageIdx" />
+            <img class="object-cover w-full h-full md:rounded-2xl" :src="currentImageSrc" :key="currentImageIdx" :alt="`Product image ${currentImageIdx+1}`" />
         </Transition>
-        <button @click="goToPrevImage()" class="group absolute left-0 top-1/2 -translate-y-1/2 ml-4 bg-white rounded-full w-8 h-8 flex justify-start items-center pl-2">
+        <button aria-label="Go to previous" @click="goToPrevImage()" class="group absolute left-0 top-1/2 -translate-y-1/2 ml-4 bg-white rounded-full w-8 h-8 flex justify-start items-center pl-2">
             <svg class="stroke-dark-blue group-hover:stroke-orange w-4" width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
         </button>
-        <button @click="goToNextImage()" class="group absolute right-0 top-1/2 -translate-y-1/2 mr-4 bg-white rounded-full w-8 h-8 flex justify-end items-center pr-2">
+        <button aria-label="Go to next" @click="goToNextImage()" class="group absolute right-0 top-1/2 -translate-y-1/2 mr-4 bg-white rounded-full w-8 h-8 flex justify-end items-center pr-2">
             <svg class="stroke-dark-blue group-hover:stroke-orange" width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
         </button>
     </div>
 
     <!-- desktop -->
     <div class="hidden md:flex flex-col max-w-[445px]">
-        <img class="object-cover w-full rounded-2xl cursor-pointer hover:opacity-50" @click="lightBoxMode = true" :src="currentImageSrc" />
+        <img class="object-cover w-full rounded-2xl cursor-pointer hover:opacity-50" @click="lightBoxMode = true" :src="currentImageSrc" :alt="`Product image ${currentImageIdx+1}`" />
         <div class="hidden md:flex flex-row h-24 gap-8 mt-8">
             <div class="cursor-pointer" v-for="{thumbnailFilename},idx in images" :key="idx" @click="currentImageIdx = idx">
                 <img :src="`/product-images/${thumbnailFilename}`" class="w-full object-scale-down rounded-lg border-2 hover:opacity-50 hover:-translate-y-1 transition-all"
                 :class="{
                     'border-transparent': idx !== currentImageIdx, 'border-orange': idx === currentImageIdx,
                     'opacity-50': idx === currentImageIdx,
-                }" />
+                }" 
+                :alt="`Product image thumbnail ${idx+1}`"/>
             </div>
         </div>
     </div>
@@ -62,15 +63,15 @@ const currentImageSrc = computed<string>(() => {
     </div>
 
     <div v-if="lightBoxMode" class="hidden md:flex flex-col fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-lg">
-        <button @click="lightBoxMode = false" class="fill-white hover:fill-orange self-end">
+        <button aria-label="Close" @click="lightBoxMode = false" class="fill-white hover:fill-orange self-end">
             <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill-rule="evenodd"/></svg>
         </button>
         <div class="relative mt-8">
-            <img :src="currentImageSrc" />
-            <button @click="goToPrevImage()" class="group absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white rounded-full w-8 h-8 flex justify-start items-center pl-2">
+            <img :src="currentImageSrc" :alt="`Product image ${currentImageIdx+1}`" />
+            <button aria-label="Go to previous" @click="goToPrevImage()" class="group absolute left-0 top-1/2 -translate-y-1/2 -ml-4 bg-white rounded-full w-8 h-8 flex justify-start items-center pl-2">
                 <svg class="stroke-dark-blue group-hover:stroke-orange w-4" width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
             </button>
-            <button @click="goToNextImage()" class="group absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white rounded-full w-8 h-8 flex justify-end items-center pr-2">
+            <button aria-label="Go to next" @click="goToNextImage()" class="group absolute right-0 top-1/2 -translate-y-1/2 -mr-4 bg-white rounded-full w-8 h-8 flex justify-end items-center pr-2">
                 <svg class="stroke-dark-blue group-hover:stroke-orange" width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke-width="3" fill="none" fill-rule="evenodd"/></svg>
             </button>
         </div>  
@@ -83,7 +84,8 @@ const currentImageSrc = computed<string>(() => {
             }"
             v-for="{thumbnailFilename},idx in images" :key="idx" @click="currentImageIdx = idx">
                 <img :src="`/product-images/${thumbnailFilename}`" class="h-full object-scale-down hover:opacity-50"
-                :class="{'opacity-50': idx === currentImageIdx}" />
+                :class="{'opacity-50': idx === currentImageIdx}"
+                :alt="`Product image thumbnail ${idx+1}`" />
             </div>
         </div>
     </div>
