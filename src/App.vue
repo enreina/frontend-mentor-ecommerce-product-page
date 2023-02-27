@@ -40,7 +40,7 @@ const selectedAmount = ref<number>(1);
 
 <template>
   <Header />
-  <div class="flex flex-col md:flex-row md:mt-20 md:justify-evenly xl:gap-32">
+  <main class="flex flex-col md:flex-row md:mt-20 md:justify-evenly xl:gap-32">
     <div class="h-[300px] md:h-full md:max-w-lg"><ProductImages :images="currentProduct.images" /></div>
     <div class="p-6 md:max-w-lg">
       <span class="text-orange uppercase text-base font-bold tracking-widest">{{ currentProduct.brand }}</span>
@@ -65,5 +65,11 @@ const selectedAmount = ref<number>(1);
         </button>
       </div>
     </div>
-  </div>
+  </main>
+  <footer class="attribution mt-auto p-8 text-xs text-center text-dark-blue">
+    <p>
+      Challenge by <a class="text-orange" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a class="text-orange" href="https://github.com/enreina">Enreina</a>.
+    </p>
+  </footer>
 </template>
