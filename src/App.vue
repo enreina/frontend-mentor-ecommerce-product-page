@@ -18,6 +18,18 @@ const currentProduct: Product = {
     { 
       imageFilename: "image-product-1.jpg", 
       thumbnailFilename: "image-product-1-thumbnail.jpg"
+    },
+    { 
+      imageFilename: "image-product-2.jpg", 
+      thumbnailFilename: "image-product-2-thumbnail.jpg"
+    },
+    { 
+      imageFilename: "image-product-3.jpg", 
+      thumbnailFilename: "image-product-3-thumbnail.jpg"
+    },
+    { 
+      imageFilename: "image-product-4.jpg", 
+      thumbnailFilename: "image-product-4-thumbnail.jpg"
     }
   ],
 };
