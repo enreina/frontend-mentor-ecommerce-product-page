@@ -68,8 +68,8 @@ const selectedAmount = ref<number>(1);
   </main>
   <footer class="attribution mt-auto p-8 text-xs text-center text-dark-blue">
     <p>
-      Challenge by <a class="text-orange" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a class="text-orange" href="https://github.com/enreina">Enreina</a>.
+      Challenge by <a class="text-orange hover:text-light-orange" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a class="text-orange hover:text-light-orange" href="https://github.com/enreina">Enreina</a>.
     </p>
   </footer>
 </template>
