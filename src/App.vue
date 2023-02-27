@@ -40,7 +40,7 @@ const selectedAmount = ref<number>(1);
 
 <template>
   <Header />
-  <div class="flex flex-col md:flex-row md:mt-20 md:justify-evenly">
+  <div class="flex flex-col md:flex-row md:mt-20 md:justify-evenly xl:gap-32">
     <div class="h-[300px] md:h-full md:max-w-lg"><ProductImages :images="currentProduct.images" /></div>
     <div class="p-6 md:max-w-lg">
       <span class="text-orange uppercase text-base font-bold tracking-widest">{{ currentProduct.brand }}</span>
